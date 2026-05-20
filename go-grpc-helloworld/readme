@@ -1,0 +1,31 @@
+## 1. Regenerate gRPC code
+
+```sh
+protoc --go_out=gen --go_opt=paths=source_relative `
+  --go-grpc_out=gen --go-grpc_opt=paths=source_relative `
+  -I . pb\helloworld.proto
+```
+
+
+## Running
+
+First Step: run grpc server
+
+```sh
+go run grpc/server.go
+```
+
+
+Second Step: run gin server
+```sh
+go run gin/main.go
+```
+
+
+## Testing
+
+Send data to gin server:
+
+```sh
+curl -v 'http://localhost:8080/rest/n/jean'
+```
